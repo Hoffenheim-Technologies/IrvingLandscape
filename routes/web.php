@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/testimonial', function () {
+    return Inertia::render('Testimonial');
+})->middleware(['auth', 'verified'])->name('testimonial');
+
+Route::get('/blog', function () {
+    return Inertia::render('Blog');
+})->middleware(['auth', 'verified'])->name('blog');
+
+Route::get('/users', function () {
+    return Inertia::render('Users');
+})->middleware(['auth', 'verified'])->name('users');
+
+require __DIR__.'/auth.php';
