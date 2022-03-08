@@ -66,54 +66,63 @@
                 const response = await fetch(API_BASE_URL + '/packages')
                 const itemsList = await response.json()
                 console.log(itemsList)
-                months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
-                for (let index = 0; index < (Math.floor(itemsList.data.length / 3)) + 1; index++) {
-                    $('.post-wrap').append(`<div class="row row-${index + 1}"></div>`)
-                    
-                }
-                itemsList.data.forEach((item, index) => {
-                    date = new Date(item.created_at)
-                    
-                    $(`.post-wrap > .row-${Math.ceil((index + 1) / 3)}`).append(`
-                        <article id="item-${item.id}" class="article-2 col-md-4">
-                            <div class="image-box">
-                                <div class="image">
-                                    <img src="images/blog/close-up-picture-hand-holding-wooden-tray-which-full-pots-plants.jpg" alt="image">
-                                </div>
-                                <div class="date-image">
-                                    <p>${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}</p>
-                                </div>
-                            </div>
-                            <div class="content-box">
-                                <div class="post-content-inner">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void(0)" class="text-decs">
-                                                Price: $ ${item.price}
-                                            </a>
-                                            ${
-                                                item.period ? 
-                                                `<a href="javascript:void(0)" class="line text-decs">
-                                                    Period: ${item.period}
-                                                </a>` : ''
-                                            }
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content-art">
-                                    <a href="javascript:void(0)" class="section-heading-jost-size28">
-                                        ${item.name}
-                                    </a>
-                                    <p class="desc-content-box text-decs">
-                                        ${item.description}
-                                    </p>
+                if (itemsList.data.length > 0){
+                    months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+                    for (let index = 0; index < (Math.floor(itemsList.data.length / 3)) + 1; index++) {
+                        $('.post-wrap').append(`<div class="row row-${index + 1}"></div>`)
+                        
+                    }
+                    itemsList.data.forEach((item, index) => {
+                        date = new Date(item.created_at)
+                        
+                        $(`.post-wrap > .row-${Math.ceil((index + 1) / 3)}`).append(`
+                            <article id="item-${item.id}" class="article-2 col-md-4">
+                                <div class="image-box">
+                                    <div class="image">
+                                        <img src="images/blog/close-up-picture-hand-holding-wooden-tray-which-full-pots-plants.jpg" alt="image">
+                                    </div>
+                                    <div class="date-image">
+                                        <p>${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}</p>
                                     </div>
                                 </div>
+                                <div class="content-box">
+                                    <div class="post-content-inner">
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:void(0)" class="text-decs">
+                                                    Price: $ ${item.price}
+                                                </a>
+                                                ${
+                                                    item.period ? 
+                                                    `<a href="javascript:void(0)" class="line text-decs">
+                                                        Period: ${item.period}
+                                                    </a>` : ''
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-art">
+                                        <a href="javascript:void(0)" class="section-heading-jost-size28">
+                                            ${item.name}
+                                        </a>
+                                        <p class="desc-content-box text-decs">
+                                            ${item.description}
+                                        </p>
+                                        </div>
+                                    </div>
 
-                            </div>
-                        </article>
-                    `)
-                });
+                                </div>
+                            </article>
+                        `)
+                    });
+                } else {
+                    console.log('nothing')
+                    $('.post-wrap').append(`
+                    <div class="row">
+                        <h1 style="color: green;">There are no packages at the moment.</h1>
+                    </div>`)
+                }
+                
             }
             load()
             

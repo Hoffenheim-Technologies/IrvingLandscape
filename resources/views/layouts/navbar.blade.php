@@ -6,7 +6,7 @@
                 <div class="col-md-3 ">
                     <div class="inner-header">
                         <div class="logo-header">
-                            <a href="index.php" title="">
+                            <a href="/" title="">
                                 <img src="images/home/irvinglogo.png" alt="images">
                             </a>
                         </div>

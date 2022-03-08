@@ -66,11 +66,12 @@
                 const response = await fetch(API_BASE_URL + '/items')
                 const itemsList = await response.json()
                 console.log(itemsList)
-                months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
-                for (let index = 0; index < (Math.floor(itemsList.data.length / 3)) + 1; index++) {
-                    $('.post-wrap').append(`<div class="row row-${index + 1}"></div>`)
-                    
-                }
+                if (itemsList.data.length > 0){
+                    months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+                    for (let index = 0; index < (Math.floor(itemsList.data.length / 3)) + 1; index++) {
+                        $('.post-wrap').append(`<div class="row row-${index + 1}"></div>`)
+                        
+                    }
                 itemsList.data.forEach((item, index) => {
                     date = new Date(item.created_at)
                     
@@ -108,6 +109,13 @@
                         </article>
                     `)
                 });
+                } else {
+                    console.log('nothing')
+                    $('.post-wrap').append(`
+                    <div class="row">
+                        <h1 style="color: green;">There are no items at the moment.</h1>
+                    </div>`)
+                }
             }
             load()
             
