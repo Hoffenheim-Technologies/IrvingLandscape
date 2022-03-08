@@ -107,14 +107,14 @@
                                 Explore
                             </p>
                             <ul class="list-menu-1 text-decs link-style4">
-                                <li><a href="services.html">Blog</a> </li>
-                                <li><a href="services.html">Our Team</a> </li>
-                                <li><a href="services.html">Services</a> </li>
-                                <li><a href="services.html">Contact</a> </li>
+                                <li><a href="/packages">Packages</a> </li>
+                                <li><a href="/team">Our Team</a> </li>
+                                <li><a href="/services">Services</a> </li>
+                                <li><a href="/contact">Contact</a> </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="footer-item padding-top-listfooter">
+                    <!-- <div class="footer-item padding-top-listfooter">
                         <div class="widgets-menu-2">
                             <p class="heading-jost-20px">
                                 Recent Post
@@ -134,7 +134,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="footer-item padding-top-listfooter">
                         <div class="widgets-subcribes">
                             <p class="heading-jost-20px">
