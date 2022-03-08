@@ -18,8 +18,12 @@ export default function Testimonial(props) {
 
     const [testimonials, setTestimonials] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
-    const [deleteSuccess, setDeleteSuccess] = useState(null)
+    const [alertOpen, setDeleteSuccess] = useState(null)
     const [deleteConfirm, setDeleteConfirm] = useState(false)
+    const [alertValue, setAlertValue] = useState('')
+    const [severity, setSeverity] = useState('info')
+    const [formName, setformName] = useState(props.auth.user.name)
+    const [formComments, setFormComments] = useState('')
 
     const onDelete = (id) => {
         let testimonialList = [...testimonials]
@@ -27,6 +31,14 @@ export default function Testimonial(props) {
         console.log(index)
         testimonialList.splice(index, 1)
         setTestimonials(testimonialList)
+    }
+
+    const onCreate = () => {
+        setAlertValue('Created Successfully!')
+        setSeverity('success')
+        setDeleteSuccess(true)
+        setFormComments('')
+        setformName(props.auth.user.name)
     }
 
     const Delete = async (id) => {
@@ -53,6 +65,29 @@ export default function Testimonial(props) {
         }
     }
 
+    const CreateTestimonial = async (data) => {
+        var formdata = new FormData();
+        formdata.append("name", data.name);
+        formdata.append("testimonial", data.testimonial);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+        };
+        setUpdating(true)
+        const response = await fetch(API_BASE_URL + "/testimonials", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            setTestimonials([...testimonials, result.data])
+        })
+        .catch(error => console.log('error', error));
+        await response;
+        await setUpdating(false)
+        onCreate()
+    }
+
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
@@ -66,7 +101,8 @@ export default function Testimonial(props) {
             event.preventDefault()
           return;
         }
-    
+        setAlertValue('')
+        setSeverity('info')
         setDeleteSuccess(false);
       };
 
@@ -124,6 +160,8 @@ export default function Testimonial(props) {
                          
                     if (confirm(`This cannot be undone! \nDelete testimonial ${thisRow.id}?`)) {
                         Delete(thisRow.id)
+                        setAlertValue("Deleted Successfully!")
+                        setSeverity('success')
                         setDeleteSuccess(true)
                         return true
                     }
@@ -144,7 +182,7 @@ export default function Testimonial(props) {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                // checkboxSelection
             />
             </div>
         );
@@ -171,6 +209,29 @@ export default function Testimonial(props) {
       getTestimonials()
       console.log(testimonials)
     }, [])
+
+    const submitForm = (e) => {
+        e.preventDefault()
+        console.log('')
+        
+        if (!formName){
+            setAlertValue('Name is null')
+            setSeverity('error')
+            setDeleteSuccess(true)
+        } 
+        if (!formComments){
+            setAlertValue('Comment is null')
+            setSeverity('error')
+            setDeleteSuccess(true)
+        }
+        if (formName && formComments) {
+            let submit = {
+                name: formName,
+                testimonial: formComments
+            }
+            CreateTestimonial(submit)
+        }
+    }
     
     return (
         <Authenticated
@@ -179,11 +240,33 @@ export default function Testimonial(props) {
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Irving Landscape | Testimonials</h2>}
         >
             <Head title="Testimonials" />
-            <Snackbar open={deleteSuccess} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    Deleted Successfully!
+            <Snackbar open={alertOpen} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+                <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
+                   {alertValue}
                 </Alert>
             </Snackbar>
+
+            <div className='py-12'>
+                <form className="max-w-7xl mx-auto sm:px-6 lg:px-8 text-lg">
+                    <h2 className='text-2xl font-bold'>Create a new Testimonial</h2>
+                    <div className='w-full flex flex-col my-4'>
+                        <label className='text-sm'>Name</label>
+                        <input id="name" name="name" className='py-3 px-2 focus:ring-0 focus:outline-none rounded-sm' placeholder="Name" value={formName} onChange={(e)=>{
+                            setformName(e.target.value)
+                        }} required/>
+                    </div>
+                    <div className='w-full flex flex-col my-4'>
+                        <label className='text-sm'>Comments</label>
+                        <input id="testimonial" name="testimonial" className='py-3 px-2 focus:ring-0 focus:outline-none rounded-sm' value={formComments} onChange={(e)=>{
+                            setFormComments(e.target.value)
+                        }} placeholder="Comments" required/>
+                    </div>
+                    <div className='my-4'>
+                        <button className='py-3 px-3 rounded font-semibold bg-green-300' type='submit' onClick={(e) => submitForm(e)}>Submit</button>
+                    </div>
+                    
+                </form>
+            </div>
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

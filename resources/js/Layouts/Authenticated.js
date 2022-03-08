@@ -30,13 +30,33 @@ export default function Authenticated({ auth, header, children }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('subscribers')} active={route().current('subscribers')}>
+                                    Subscribers
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href={route('testimonial')} active={route().current('testimonial')}>
                                     Testimonial
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('blog')} active={route().current('blog')}>
-                                    Blog
+                                <NavLink href={route('items')} active={route().current('items')}>
+                                    Items
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('packages')} active={route().current('packages')}>
+                                    Packages
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('account')} active={route().current('account')}>
+                                    Accounting
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('sales')} active={route().current('sales')}>
+                                    Sales
                                 </NavLink>
                             </div>
                         </div>
@@ -107,6 +127,41 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('users')} active={route().current('users')}>
+                            Users
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('subscribers')} active={route().current('subscribers')}>
+                            Subscribers
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('testimonial')} active={route().current('testimonial')}>
+                            Testimonial
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('items')} active={route().current('items')}>
+                            Items
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('packages')} active={route().current('packages')}>
+                            Packages
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('account')} active={route().current('account')}>
+                            Accounting
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('sales')} active={route().current('sales')}>
+                            Sales
                         </ResponsiveNavLink>
                     </div>
 
