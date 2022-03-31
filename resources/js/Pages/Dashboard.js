@@ -19,8 +19,8 @@ export default function Dashboard(props) {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-row'>
-            <div className="py-12 w-1/2">
+            <div className='sm:flex flex-row'>
+            <div className="my-6 sm:w-1/2">
                 <div className="w-full mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
@@ -38,7 +38,7 @@ export default function Dashboard(props) {
                 </div>
             </div>
 
-            <div className="py-12 w-1/2">
+            <div className="my-6 sm:w-1/2">
                 <div className="w-full mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
@@ -50,6 +50,78 @@ export default function Dashboard(props) {
                             }
                             >
                                 Testimonials
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div><div className='sm:flex flex-row'>
+            <div className="my-6 sm:w-1/2">
+                <div className="w-full mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
+                            <span>Go to Packages.</span>
+                        <Link
+                            href={route('packages')}
+                            className={
+                                'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-lg text-gray-900 transition duration-150 ease-in-out no-underline'
+                            }
+                            >
+                                Packages
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="my-6 sm:w-1/2">
+                <div className="w-full mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
+                            <span>Go to Items.</span>
+                        <Link
+                            href={route('items')}
+                            className={
+                                'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-lg text-gray-900 transition duration-150 ease-in-out no-underline'
+                            }
+                            >
+                                Items
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div><div className='sm:flex flex-row'>
+            <div className="my-6 sm:w-1/2">
+                <div className="w-full mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
+                            <span>Check your subscribers.</span>
+                        <Link
+                            href={route('subscribers')}
+                            className={
+                                'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-lg text-gray-900 transition duration-150 ease-in-out no-underline'
+                            }
+                            >
+                                Subscribers
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="my-6 sm:w-1/2">
+                <div className="w-full mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white border-b border-gray-200 flex justify-between items-center">
+                            <span>Accounting Module.</span>
+                        <Link
+                            href={route('account')}
+                            className={
+                                'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-lg text-gray-900 transition duration-150 ease-in-out no-underline'
+                            }
+                            >
+                                Accounts
                             </Link>
                         </div>
                     </div>

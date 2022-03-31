@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SubscriberSeeder::class,
             ItemSeeder::class,
             PackageSeeder::class,
+            AccountSeeder::class,
         ]);
     }
 }

@@ -54,11 +54,11 @@ export default function Authenticated({ auth, header, children }) {
                                     Accounting
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            {/* <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href={route('sales')} active={route().current('sales')}>
                                     Sales
                                 </NavLink>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -159,11 +159,11 @@ export default function Authenticated({ auth, header, children }) {
                             Accounting
                         </ResponsiveNavLink>
                     </div>
-                    <div className="pt-2 pb-3 space-y-1">
+                    {/* <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('sales')} active={route().current('sales')}>
                             Sales
                         </ResponsiveNavLink>
-                    </div>
+                    </div> */}
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">
@@ -187,6 +187,7 @@ export default function Authenticated({ auth, header, children }) {
             )}
 
             <main>{children}</main>
+            <div className='absolute w-full text-center'>Powered by Hoffenheim Technologies</div>
         </div>
     );
 }

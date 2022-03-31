@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\UserController;
 
@@ -41,6 +42,14 @@ Route::controller(ItemsController::class)->group(function() {
     Route::get('/items/{id}', 'show');
     Route::post('/items', 'store');
     Route::delete('/items/{id}', 'delete');
+});
+
+Route::controller(AccountController::class)->group(function() {
+    Route::get('/accounts', 'index');
+    Route::get('/accounts/total', 'total');
+    Route::get('/accounts/{id}', 'show');
+    Route::post('/accounts', 'store');
+    Route::delete('/accounts/{id}', 'delete');
 });
 
 Route::controller(PackageController::class)->group(function() {
