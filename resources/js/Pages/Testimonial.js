@@ -108,18 +108,18 @@ export default function Testimonial(props) {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'name', headerName: 'Name', width: 255 },
+        { field: 'name', headerName: 'Name', width: 200 },
         {
             field: 'testimonial',
             headerName: 'Testimonial',
             description: 'This column has text data',
             sortable: false,
-            width: 1000,
+            width: 350,
         },
         {
             field: 'view',
             headerName: 'View',
-            width: 100,
+            width: 70,
             renderCell: (params) => {
                 const onClick = (e) => {
                 e.stopPropagation(); // don't select this row after clicking
@@ -143,7 +143,7 @@ export default function Testimonial(props) {
         {
             field: 'delete',
             headerName: 'Delete',
-            width: 100,
+            width: 70,
             renderCell: (params) => {
                 const onClick = (e) => {
                     e.stopPropagation(); // don't select this row after clicking

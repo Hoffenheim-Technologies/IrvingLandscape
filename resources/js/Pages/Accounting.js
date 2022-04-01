@@ -15,9 +15,13 @@ export default function Accounting(props) {
     const columns = [
         { field: 'id', headerName: 'ID', width: 10 },
         { field: 'date', headerName: 'Date', width: 100 },
-        { field: 'description', headerName: 'Description', width: 600 },
+        { field: 'description', headerName: 'Description', width: 350 },
         { field: 'type', headerName: 'Type', type: 'string', width: 90 },
-        { field: 'cost', headerName: 'Value', type:'number', width: 65 },
+        { field: 'cost', headerName: 'Value', type:'number', width: 65,
+        valueFormatter: (params) => {
+            // first converts to JS Date, then to locale option through date-fns
+            return `$ ${params.value}`;
+        }},
         { field: 'view', headerName: 'View', width: 70,
             renderCell: (params) => {
                 const onClick = (e) => {
@@ -42,7 +46,7 @@ export default function Accounting(props) {
         {
             field: 'delete',
             headerName: 'Delete',
-            width: 70,
+            width: 75, minWidth: 50, maxWidth: 100,
             renderCell: (params) => {
                 const onClick = (e) => {
                     e.stopPropagation(); // don't select this row after clicking
@@ -69,7 +73,7 @@ export default function Accounting(props) {
         
                 return <IconButton onClick={onClick}><DeleteIcon sx={{color: '#ff0000'}}/></IconButton>;
             }
-        }
+        },
     ];
     
     const rows = [
@@ -324,11 +328,11 @@ export default function Accounting(props) {
                         <div className="p-6 bg-white border-b border-gray-200">There are no accounting records</div>
                         }
                         <div>
-                            <div>Debit Total is <span className='text-red-500'>{totals ? totals.debit : 0}</span></div>
-                            <div>Credit Total is <span className='text-green-500'>{totals ? totals.credit : 0}</span></div>
+                            <div>Debit Total is <span style={{color: 'rgb(239 68 68)'}}>{totals ? totals.debit : 0}</span></div>
+                            <div>Credit Total is <span style={{color: 'rgb(34 197 94)'}}>{totals ? totals.credit : 0}</span></div>
                         </div>
                         <div>
-                            <div>Net Balance is {totals ? totals.debit > totals.credit ? <span className='text-red-500'>{totals.credit - totals.debit}</span> : <span className='text-green-500'>{totals.credit - totals.debit}</span> : 0}</div>
+                            <div>Net Balance is {totals ? totals.debit > totals.credit ? <span style={{color: 'rgb(239 68 68)'}}>{totals.credit - totals.debit}</span> : <span style={{color: 'rgb(34 197 94)'}}>{totals.credit - totals.debit}</span> : 0}</div>
                         </div>
                     </div>
                 </div>

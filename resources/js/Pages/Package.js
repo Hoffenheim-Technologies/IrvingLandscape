@@ -52,7 +52,7 @@ export default function Packages(props) {
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Name', width: 200, type: 'string' },
-        { field: 'description', headerName: 'Description', width: 500, type: 'string' },
+        { field: 'description', headerName: 'Description', width: 350, type: 'string' },
         { field: 'period', headerName: 'Period', width: 200, type: 'string' },
         { 
             field: 'price', 
@@ -67,7 +67,7 @@ export default function Packages(props) {
         {
             field: 'view',
             headerName: 'View',
-            width: 100,
+            width: 70,
             renderCell: (params) => {
                 const onClick = (e) => {
                 e.stopPropagation(); // don't select this row after clicking
@@ -91,7 +91,7 @@ export default function Packages(props) {
         {
             field: 'delete',
             headerName: 'Delete',
-            width: 100,
+            width: 70,
             renderCell: (params) => {
                 const onClick = (e) => {
                     e.stopPropagation(); // don't select this row after clicking
