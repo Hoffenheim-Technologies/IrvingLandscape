@@ -20,9 +20,18 @@ class ItemsController extends Controller
     public function store(Request $request) {
         $request->validate([
             'name' => 'required|max:255',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
-        $item = Item::create($request->all());
+        // $item = Item::create($request->all());
+        $image_name = $request->file('image')->hashName();
+        $path = $request->file('image')->store('public/images/items');
+        $item = new Item;
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->image = '/storage/images/items/'.$image_name;
+        $item->price = $request->price;
+        $item->save();
 
         return (new ItemResource($item))
             ->response()

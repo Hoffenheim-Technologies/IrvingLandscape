@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Authenticated from '@/Layouts/Authenticated'
 import { Head } from '@inertiajs/inertia-react'
 import { DataGrid } from '@mui/x-data-grid'
@@ -22,7 +22,7 @@ export default function Items(props) {
     const [formName, setFormName] = useState('')
     const [formDescription, setFormDescription] = useState('')
     const [formPrice, setFormPrice] = useState('')
-    const [formImage, setFormImage] = useState('images/items/')
+    const [formImage, setFormImage] = useState()
     const [items, setItems] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     
@@ -155,7 +155,6 @@ export default function Items(props) {
         setDeleteSuccess(true)
         setFormDescription('')
         setFormName('')
-        setFormImage('')
         setFormPrice('')
     }
 
@@ -172,12 +171,13 @@ export default function Items(props) {
         redirect: 'follow'
         };
         setUpdating(true)
+        // console.log(formdata.get("image"))
         const response = await fetch(API_BASE_URL + "/items", requestOptions)
         .then(response => response.json())
         .then(result => {
-            setTestimonials([...items, result.data])
+            setItems([...items, result.data])
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.error(error));
         await response;
         await setUpdating(false)
         onCreate()
@@ -208,6 +208,7 @@ export default function Items(props) {
                 image: formImage,
                 price: formPrice
             }
+            console.log(submit)
             CreateItem(submit)
         }
     }
@@ -273,9 +274,7 @@ export default function Items(props) {
                     </div>
                     <div className='w-full flex flex-col my-4'>
                         <label className='text-sm'>Image</label>
-                        <input id="image" name="image" className='py-3 px-2 focus:ring-0 focus:outline-none rounded-sm' placeholder="Image Url" value={formImage} onChange={(e)=>{
-                            setFormImage(e.target.value)
-                        }} required/>
+                        <input id="image" name="image" className='py-3 px-2 focus:ring-0 focus:outline-none rounded-sm' placeholder="Image Url" type={'file'} onChange={(e)=>{console.log(e.target); setFormImage(e.target.files[0])}} required/>
                     </div>
                     <div className='my-4'>
                         <button className='py-3 px-3 rounded font-semibold bg-green-300' type='submit' onClick={(e) => submitForm(e)}>Submit</button>
