@@ -647,9 +647,6 @@ select {
 .left-0 {
   left: 0px;
 }
-.bottom-0 {
-  bottom: 0px;
-}
 .z-0 {
   z-index: 0;
 }
@@ -667,13 +664,17 @@ select {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -729,6 +730,12 @@ select {
 .-mr-0 {
   margin-right: -0px;
 }
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
 .block {
   display: block;
 }
@@ -768,6 +775,9 @@ select {
 .h-9 {
   height: 2.25rem;
 }
+.h-full {
+  height: 100%;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -795,8 +805,14 @@ select {
 .w-48 {
   width: 12rem;
 }
-.w-1\/2 {
-  width: 50%;
+.w-1\/12 {
+  width: 8.333333%;
+}
+.w-3\/12 {
+  width: 25%;
+}
+.w-1\/6 {
+  width: 16.666667%;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -806,6 +822,9 @@ select {
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-\[100vw\] {
+  max-width: 100vw;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -975,6 +994,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
+.bg-transparent {
+  background-color: transparent;
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1054,6 +1076,12 @@ select {
 }
 .pt-1 {
   padding-top: 0.25rem;
+}
+.pt-5 {
+  padding-top: 1.25rem;
+}
+.pt-20 {
+  padding-top: 5rem;
 }
 .text-left {
   text-align: left;
@@ -1175,14 +1203,6 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-.text-green-500 {
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1435,9 +1455,14 @@ select {
     margin-bottom: -1px;
   }
 
-  .sm\:mx-6 {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+  .sm\:-my-3 {
+    margin-top: -0.75rem;
+    margin-bottom: -0.75rem;
+  }
+
+  .sm\:my-3 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 
   .sm\:ml-10 {
@@ -1476,8 +1501,28 @@ select {
     width: 50%;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-1\/6 {
+    width: 16.666667%;
+  }
+
+  .sm\:w-5\/6 {
+    width: 83.333333%;
+  }
+
+  .sm\:min-w-\[200px\] {
+    min-width: 200px;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
+  }
+
+  .sm\:max-w-\[calc\(100\%-200px\)\] {
+    max-width: calc(100% - 200px);
   }
 
   .sm\:flex-1 {
@@ -1523,6 +1568,46 @@ select {
 }
 @media (min-width: 768px) {
 
+  .md\:block {
+    display: block;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:w-1\/6 {
+    width: 16.666667%;
+  }
+
+  .md\:w-5\/6 {
+    width: 83.333333%;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:min-w-\[200px\] {
+    min-width: 200px;
+  }
+
+  .md\:max-w-\[100\%-20px\] {
+    max-width: 100% - 20px;
+  }
+
+  .md\:max-w-\[100\%-200px\] {
+    max-width: 100% - 200px;
+  }
+
+  .md\:max-w-\[calc\(100\%-200px\)\] {
+    max-width: calc(100% - 200px);
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1536,19 +1621,6 @@ select {
   }
 }
 @media (min-width: 1024px) {
-
-  .lg\:mx-8 {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-
-  .lg\:flex {
-    display: flex;
-  }
-
-  .lg\:w-1\/2 {
-    width: 50%;
-  }
 
   .lg\:px-8 {
     padding-left: 2rem;
